@@ -1,47 +1,49 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #f4f4f4;
-  color: #333;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Samuele Mara</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <img src="assets/profile.jpg" alt="Samuele Mara" class="profile-pic"/>
+    <h1>Samuele Mara</h1>
+    <p>Engineer · Robotics · AI · Applied Research</p>
+    <nav>
+      <a href="https://github.com/SamueleMara" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/SamueleMara" target="_blank">LinkedIn</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-header {
-  background: #222;
-  color: white;
-  text-align: center;
-  padding: 2em;
-}
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I'm passionate about robotics, AI, and building tools that connect theory to practice. My work includes 3D Gaussian Splatting, real-time sensing pipelines, and indirect bridge monitoring through vehicle-sensor integration.
+      </p>
+    </section>
 
-nav a {
-  color: #00bfff;
-  margin: 0 1em;
-  text-decoration: none;
-}
+    <section id="projects">
+      <h2>Projects</h2>
+      <ul>
+        <li><strong>AMBROSE</strong>: Sensor-equipped vehicle for indirect bridge health monitoring with Movyon S.p.A.</li>
+        <li><strong>3D Gaussian Splatting + Masks</strong>: Point cloud filtering and semantic splatting pipelines.</li>
+        <li><strong>COLMAP + RealSense</strong>: RGBD camera data capture + pose export for 3D model generation.</li>
+      </ul>
+    </section>
 
-nav a:hover {
-  text-decoration: underline;
-}
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: samuele@example.com</p>
+    </section>
+  </main>
 
-main {
-  max-width: 800px;
-  margin: 2em auto;
-  padding: 0 1em;
-}
-
-.profile-pic {
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-}
-
-section {
-  margin-bottom: 2em;
-}
-
-footer {
-  text-align: center;
-  background: #eee;
-  padding: 1em;
-}
+  <footer>
+    <p>© 2025 Samuele Mara</p>
+  </footer>
+</body>
+</html>
