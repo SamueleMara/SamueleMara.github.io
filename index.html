@@ -179,43 +179,49 @@
     <p>© 2025 Samuele Mara · Powered by GitHub Pages</p>
   </footer>
 
-  <script>
-    window.addEventListener('load', function () {
-      // Image glider
-      new Glider(document.querySelector('.image-glider'), {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        draggable: true,
-        exactWidth: true,
-        scrollLock: true,
-        arrows: {
-          prev: '.image-glider-contain .glider-prev',
-          next: '.image-glider-contain .glider-next'
-        }
-      });
+	<script>
+	window.addEventListener('load', function () {
+		function initGlider(containerSel, gliderSel) {
+			const container = document.querySelector(containerSel);
+			if (!container) return;
+			const gliderEl = container.querySelector(gliderSel);
+			if (!gliderEl) return;
+	
+			const prevBtn = container.querySelector('.glider-prev');
+			const nextBtn = container.querySelector('.glider-next');
+	
+			const options = {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				draggable: true,
+				exactWidth: true,
+				scrollLock: true,
+				arrows: {}
+			};
+	
+			if (prevBtn) options.arrows.prev = `${containerSel} .glider-prev`;
+			if (nextBtn) options.arrows.next = `${containerSel} .glider-next`;
+	
+			new Glider(gliderEl, options);
+		}
+	
+		// Initialize image and video gliders
+		initGlider('.image-glider-contain', '.image-glider');
+		initGlider('.video-glider-contain', '.video-glider');
+	
+		// Autoplay muted looping videos
+		document.querySelectorAll('.video-glider video').forEach(video => {
+			video.muted = true;
+			video.loop = true;
+			video.playsInline = true;
+			video.play().catch(() => {
+				// Autoplay blocked; user can manually start
+			});
+		});
+	});
+	</script>
 
-      // Video glider
-      new Glider(document.querySelector('.video-glider'), {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        draggable: true,
-        exactWidth: true,
-        scrollLock: true,
-        arrows: {
-          prev: '.video-glider-contain .glider-prev',
-          next: '.video-glider-contain .glider-next'
-        }
-      });
-
-      // Autoplay muted looping videos
-      document.querySelectorAll('.video-glider video').forEach(video => {
-        video.muted = true;
-        video.loop = true;
-        video.playsInline = true;
-        video.play().catch(() => {});
-      });
-    });
-  </script>
   
 </body>
 </html>
+
