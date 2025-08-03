@@ -98,6 +98,102 @@ footer {
   text-decoration: underline;
 }
 
+/* Slider container */
+.slider {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  margin: 2em auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Hide radio buttons */
+input[type="radio"] {
+  display: none;
+}
+
+/* Slides wrapper */
+.slides {
+  display: flex;
+  width: 300%; /* Adjust according to number of slides */
+  transition: transform 0.5s ease;
+}
+
+/* Single slide */
+.slide {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Images and videos inside slides */
+.slide img,
+.slide video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  object-fit: contain;
+  background: #000;
+}
+
+/* Navigation dots container */
+.navigation {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Navigation dots */
+.nav-btn {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  background: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Active dot */
+input[type="radio"]:checked + .nav-btn {
+  background: #007acc;
+}
+
+/* Slide position logic (adjust -100% increments per slide) */
+#image-slide1:checked ~ .image-slides {
+  transform: translateX(0%);
+}
+#image-slide2:checked ~ .image-slides {
+  transform: translateX(-100%);
+}
+#image-slide3:checked ~ .image-slides {
+  transform: translateX(-200%);
+}
+#image-slide4:checked ~ .image-slides {
+  transform: translateX(-300%);
+}
+#image-slide5:checked ~ .image-slides {
+  transform: translateX(-400%);
+}
+#image-slide6:checked ~ .image-slides {
+  transform: translateX(-500%);
+}
+#image-slide7:checked ~ .image-slides {
+  transform: translateX(-600%);
+}
+
+/* Videos slider */
+#video-slide1:checked ~ .video-slides {
+  transform: translateX(0%);
+}
+#video-slide2:checked ~ .video-slides {
+  transform: translateX(-100%);
+}
+
+
 /* Glider containers */
 .glider-contain,
 .video-glider-contain {
@@ -189,10 +285,73 @@ footer {
   }
 }
 
-/* Extra small devices: better padding for glider */
+
+/* Extra small devices (phones, up to 480px) */
 @media (max-width: 480px) {
+  .slider {
+    padding: 0.5em 1em;
+  }
+  .nav-btn {
+    width: 8px;
+    height: 8px;
+    margin: 0 3px;
+  }
+  .slide img,
+  .slide video {
+    max-height: 180px;
+  }
   .glider-contain,
   .video-glider-contain {
     padding: 1em 1em;
   }
 }
+
+/* Small devices (phones in landscape, small tablets, 481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .slider {
+    padding: 1em 1.5em;
+  }
+  .nav-btn {
+    width: 10px;
+    height: 10px;
+    margin: 0 4px;
+  }
+  .slide img,
+  .slide video {
+    max-height: 250px;
+  }
+}
+
+/* Medium devices (tablets and small laptops, 769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .slider {
+    padding: 1.5em 2em;
+  }
+  .nav-btn {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+  }
+  .slide img,
+  .slide video {
+    max-height: 350px;
+  }
+}
+
+/* Large devices (desktops, above 1024px) */
+@media (min-width: 1025px) {
+  .slider {
+    padding: 2em 3em;
+  }
+  .nav-btn {
+    width: 14px;
+    height: 14px;
+    margin: 0 6px;
+  }
+  .slide img,
+  .slide video {
+    max-height: 400px;
+  }
+}
+
+

@@ -56,7 +56,7 @@
       </ul>
     </section>
 
-    <section id="projects">
+    <!-- <section id="projects">
       <h2>Academic Projects</h2>
       <ul>
         <li><strong>MSc Thesis</strong>: AI for Agricultural Robotics – Improved occluded fruit detection with YOLOv11 and 3D Gaussian Splatting (2025)</li>
@@ -97,6 +97,75 @@
         </div>
         <button class="glider-next video-next" aria-label="Next video" type="button">→</button>
         <div role="tablist" class="dots video-dots" aria-label="Video slider pagination"></div>
+      </div>
+    </section> -->
+    <section id="projects">
+      <h2>Academic Projects</h2>
+      <ul>
+        <li><strong>MSc Thesis</strong>: AI for Agricultural Robotics – Improved occluded fruit detection with YOLOv11 and 3D Gaussian Splatting (2025)</li>
+        <li><strong>Ambrose Project</strong>: Indirect Bridge Health Monitoring with Movyon SPA; published at IOMAC 2024</li>
+        <li><strong>3-DOF Robot Design</strong>: Mechanical & control system of an anthropomorphic arm (2023)</li>
+        <li><strong>Ball-on-Plate Control</strong>: Dynamic modeling & control with Kalman Filters and Raspberry Pi (2023)</li>
+        <li><strong>ROS SLAM and Path Planning</strong>: SLAM + A*/RRT-based path planning in Gazebo with TurtleBot (2023)</li>
+      </ul>
+
+      <h2>Gallery</h2>
+      <div class="slider">
+        <!-- Image radio buttons -->
+        <input type="radio" name="image-slider" id="image-slide1" checked>
+        <input type="radio" name="image-slider" id="image-slide2">
+        <input type="radio" name="image-slider" id="image-slide3">
+        <input type="radio" name="image-slider" id="image-slide4">
+        <input type="radio" name="image-slider" id="image-slide5">
+        <input type="radio" name="image-slider" id="image-slide6">
+        <input type="radio" name="image-slider" id="image-slide7">
+
+        <div class="slides image-slides">
+          <div class="slide"><img src="assets/gallery/3Dreconstruction.png" alt="3D Reconstruction" title="3D Reconstruction" /></div>
+          <div class="slide"><img src="assets/gallery/detection.png" alt="Fruit Detection" title="Fruit Detection" /></div>
+          <div class="slide"><img src="assets/gallery/pipeline.png" alt="AI Pipeline" title="AI Pipeline" /></div>
+          <div class="slide"><img src="assets/gallery/3dofs_robot.jpg" alt="3 Dofs robot" title="3 Dofs robot" /></div>
+          <div class="slide"><img src="assets/gallery/esploso.png" alt="Esploso" title="Esploso" /></div>
+          <div class="slide"><img src="assets/gallery/movyon.png" alt="movyon" title="movyon" /></div>
+          <div class="slide"><img src="assets/gallery/autonomous_vehicles.png" alt="autonomous_vehicles" title="autonomous_vehicles" /></div>
+        </div>
+
+        <div class="navigation">
+          <label for="image-slide1" class="nav-btn" aria-label="Slide 1"></label>
+          <label for="image-slide2" class="nav-btn" aria-label="Slide 2"></label>
+          <label for="image-slide3" class="nav-btn" aria-label="Slide 3"></label>
+          <label for="image-slide4" class="nav-btn" aria-label="Slide 4"></label>
+          <label for="image-slide5" class="nav-btn" aria-label="Slide 5"></label>
+          <label for="image-slide6" class="nav-btn" aria-label="Slide 6"></label>
+          <label for="image-slide7" class="nav-btn" aria-label="Slide 7"></label>
+        </div>
+      </div>
+
+      <h2>Videos</h2>
+      <div class="slider">
+        <!-- Video radio buttons -->
+        <input type="radio" name="video-slider" id="video-slide1" checked>
+        <input type="radio" name="video-slider" id="video-slide2">
+
+        <div class="slides video-slides">
+          <div class="slide">
+            <video controls muted playsinline>
+              <source src="assets/gallery/str2.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="slide">
+            <video controls muted playsinline>
+              <source src="assets/gallery/table_steelball_best.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+
+        <div class="navigation">
+          <label for="video-slide1" class="nav-btn" aria-label="Video 1"></label>
+          <label for="video-slide2" class="nav-btn" aria-label="Video 2"></label>
+        </div>
       </div>
     </section>
 
