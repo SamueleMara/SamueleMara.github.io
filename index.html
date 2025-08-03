@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Samuele Mara</title>
   <link rel="stylesheet" href="style.css" />
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/robot-line-icon.png">
+  <link rel="icon" type="image/png" href="assets/robot-line-icon.png" />
   <!-- Lightbox2 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet" />
   <!-- Lightbox2 JS -->
   <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js" defer></script>
   <!-- Glider.js CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css" />
   <!-- Glider.js JS -->
-  <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js" defer></script>
 </head>
 <body>
   <header>
@@ -22,8 +22,8 @@
     <h1>Samuele Mara</h1>
     <p>Research Assistant · IDSIA · AI and 3D Perception for Robotics</p>
     <nav>
-      <a href="https://github.com/SamueleMara" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://linkedin.com/in/SamueleMara" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/SamueleMara" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://linkedin.com/in/SamueleMara" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a href="mailto:samuelemara@alice.it">Email</a>
     </nav>
   </header>
@@ -33,7 +33,7 @@
       <h2>About Me</h2>
       <p>
         I'm a Research Assistant at IDSIA (Istituto Dalle Molle di Studi sull’Intelligenza Artificiale), passionate about 
-        robotic systems, 3D perception, and AI for real-world applications.<br>
+        robotic systems, 3D perception, and AI for real-world applications.<br />
         My background is in Mechanical Engineering, with a strong focus on Robotics, Mechatronics, Computer Vision, and Radiance Field-based techniques for robotic manipulation.
       </p>
     </section>
@@ -67,8 +67,8 @@
       </ul>
 
       <h2>Gallery</h2>
-      <div class="glider-contain image-glider-contain">
-        <button class="glider-prev image-prev" aria-label="Previous image">←</button>
+      <div class="glider-contain image-glider-contain" tabindex="0" aria-label="Image gallery slider">
+        <button class="glider-prev image-prev" aria-label="Previous image" type="button">←</button>
         <div class="glider image-glider">
           <img src="assets/gallery/3Dreconstruction.png" alt="3D Reconstruction" title="3D Reconstruction" />
           <img src="assets/gallery/detection.png" alt="Fruit Detection" title="Fruit Detection" />
@@ -78,25 +78,25 @@
           <img src="assets/gallery/movyon.png" alt="movyon" title="movyon" />
           <img src="assets/gallery/autonomous_vehicles.png" alt="autonomous_vehicles" title="autonomous_vehicles" />
         </div>
-        <button class="glider-next image-next" aria-label="Next image">→</button>
-        <div role="tablist" class="dots image-dots"></div>
+        <button class="glider-next image-next" aria-label="Next image" type="button">→</button>
+        <div role="tablist" class="dots image-dots" aria-label="Image slider pagination"></div>
       </div>
 
       <h2>Videos</h2>
-      <div class="glider-contain video-glider-contain">
-        <button class="glider-prev video-prev" aria-label="Previous video">←</button>
+      <div class="glider-contain video-glider-contain" tabindex="0" aria-label="Video gallery slider">
+        <button class="glider-prev video-prev" aria-label="Previous video" type="button">←</button>
         <div class="glider video-glider">
-          <video autoplay muted playsinline controls>
+          <video playsinline muted controls preload="metadata" tabindex="0" aria-label="Video 1: str2">
             <source src="assets/gallery/str2.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <video autoplay muted playsinline controls>
+          <video playsinline muted controls preload="metadata" tabindex="0" aria-label="Video 2: table steelball best">
             <source src="assets/gallery/table_steelball_best.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
-        <button class="glider-next video-next" aria-label="Next video">→</button>
-        <div role="tablist" class="dots video-dots"></div>
+        <button class="glider-next video-next" aria-label="Next video" type="button">→</button>
+        <div role="tablist" class="dots video-dots" aria-label="Video slider pagination"></div>
       </div>
     </section>
 
@@ -113,14 +113,14 @@
       <h2>Publications & Thesis</h2>
       <ul>
         <li>
-          <strong>MSc Thesis:</strong> 
-          <a href="assets/thesis/Tesi_Mara_Samuele.pdf" target="_blank" rel="noopener">
+          <strong>MSc Thesis:</strong>
+          <a href="assets/thesis/Tesi_Mara_Samuele.pdf" target="_blank" rel="noopener noreferrer">
             <em>An improved computer vision-based approach for automatic fruit picking</em> (2025)
           </a>
         </li>
         <li>
-          <strong>Conference Paper:</strong> 
-          <a href="https://doi.org/10.1007/978-3-031-61425-5_49" target="_blank" rel="noopener">
+          <strong>Conference Paper:</strong>
+          <a href="https://doi.org/10.1007/978-3-031-61425-5_49" target="_blank" rel="noopener noreferrer">
             Indirect Bridge Health Monitoring – IOMAC 2024 Proceedings
           </a>
         </li>
@@ -162,7 +162,6 @@
         <a href="assets/gallery/amici.png" data-lightbox="gallery" data-title="Personal Inspiration – 'Amici'">
           <img src="assets/gallery/amici.png" alt="Amici" />
         </a>
-        
       </div>
     </section>
 
@@ -170,8 +169,8 @@
       <h2>Contact</h2>
       <p>Email: <a href="mailto:samuelemara@alice.it">samuelemara@alice.it</a></p>
       <p>Phone: +39 348 715 2064</p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/SamueleMara" target="_blank" rel="noopener">SamueleMara</a></p>
-      <p>GitHub: <a href="https://github.com/SamueleMara" target="_blank" rel="noopener">github.com/SamueleMara</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/SamueleMara" target="_blank" rel="noopener noreferrer">SamueleMara</a></p>
+      <p>GitHub: <a href="https://github.com/SamueleMara" target="_blank" rel="noopener noreferrer">github.com/SamueleMara</a></p>
     </section>
   </main>
 
@@ -179,47 +178,46 @@
     <p>© 2025 Samuele Mara · Powered by GitHub Pages</p>
   </footer>
 
-	<script>
-	window.addEventListener('load', function () {
-		function initGlider(containerSel, gliderSel) {
-			const container = document.querySelector(containerSel);
-			if (!container) return;
-			const gliderEl = container.querySelector(gliderSel);
-			if (!gliderEl) return;
-	
-			const prevBtn = container.querySelector('.glider-prev');
-			const nextBtn = container.querySelector('.glider-next');
-	
-			const options = {
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				draggable: true,
-				exactWidth: true,
-				scrollLock: true,
-				arrows: {}
-			};
-	
-			if (prevBtn) options.arrows.prev = `${containerSel} .glider-prev`;
-			if (nextBtn) options.arrows.next = `${containerSel} .glider-next`;
-	
-			new Glider(gliderEl, options);
-		}
-	
-		// Initialize image and video gliders
-		initGlider('.image-glider-contain', '.image-glider');
-		initGlider('.video-glider-contain', '.video-glider');
-	
-		// Autoplay muted looping videos
-		document.querySelectorAll('.video-glider video').forEach(video => {
-			video.muted = true;
-			video.loop = true;
-			video.playsInline = true;
-			video.play().catch(() => {
-				// Autoplay blocked; user can manually start
-			});
-		});
-	});
-	</script>
+  <script>
+    window.addEventListener('load', function () {
+      function initGlider(containerSel, gliderSel) {
+        const container = document.querySelector(containerSel);
+        if (!container) return;
+        const gliderEl = container.querySelector(gliderSel);
+        if (!gliderEl) return;
 
+        const prevBtn = container.querySelector('.glider-prev');
+        const nextBtn = container.querySelector('.glider-next');
+
+        const options = {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          draggable: true,
+          exactWidth: true,
+          scrollLock: true,
+          arrows: {}
+        };
+
+        if (prevBtn) options.arrows.prev = `${containerSel} .glider-prev`;
+        if (nextBtn) options.arrows.next = `${containerSel} .glider-next`;
+
+        new Glider(gliderEl, options);
+      }
+
+      // Initialize image and video gliders
+      initGlider('.image-glider-contain', '.image-glider');
+      initGlider('.video-glider-contain', '.video-glider');
+
+      // Autoplay muted looping videos (optional: can be controlled by user)
+      document.querySelectorAll('.video-glider video').forEach(video => {
+        video.muted = true;
+        video.loop = true;
+        video.playsInline = true;
+        video.play().catch(() => {
+          // Autoplay blocked; user can manually start
+        });
+      });
+    });
+  </script>
 </body>
 </html>

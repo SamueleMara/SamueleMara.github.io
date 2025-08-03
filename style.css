@@ -98,6 +98,7 @@ footer {
   text-decoration: underline;
 }
 
+/* Glider containers */
 .glider-contain,
 .video-glider-contain {
   position: relative;
@@ -106,20 +107,26 @@ footer {
   padding: 1em 2em;
   box-sizing: border-box;
   overflow: visible;
+  max-width: 100%; /* ensure container never exceeds viewport width */
 }
 
+/* Glider track */
 .glider {
   display: flex;
   overflow: hidden;
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory; /* smooth snap for touch */
+  -webkit-overflow-scrolling: touch; /* smooth momentum scrolling on iOS */
 }
 
+/* Each slide */
 .glider > * {
   flex: 0 0 100%;
   max-width: 100%;
   scroll-snap-align: center;
 }
 
+/* Navigation buttons */
 .glider-prev,
 .glider-next {
   position: absolute;
@@ -135,16 +142,21 @@ footer {
   height: 40px;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent; /* prevent blue tap highlight */
 }
 
 .glider-prev {
-  left: -20px;
+  left: 0; /* put buttons inside container for mobile */
+  margin-left: 5px;
 }
 
 .glider-next {
-  right: -20px;
+  right: 0;
+  margin-right: 5px;
 }
 
+/* Images and videos inside glider */
 .glider img,
 .video-glider video {
   width: 100%;
@@ -154,6 +166,8 @@ footer {
   background: #000;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
+  user-select: none;
+  pointer-events: auto; /* enable video controls/touch */
 }
 
 .glider img:hover,
@@ -172,5 +186,13 @@ footer {
   .glider img,
   .video-glider video {
     max-height: 250px;
+  }
+}
+
+/* Extra small devices: better padding for glider */
+@media (max-width: 480px) {
+  .glider-contain,
+  .video-glider-contain {
+    padding: 1em 1em;
   }
 }
