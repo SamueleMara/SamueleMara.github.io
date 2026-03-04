@@ -2,220 +2,722 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Samuele Mara</title>
-  <link rel="stylesheet" href="style.css" />
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/robot-line-icon.png">
-  <!-- Lightbox2 CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
-  <!-- Lightbox2 JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
-  <!-- Glider.js CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
-  <!-- Glider.js JS -->
-  <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
+  <link rel="icon" type="image/png" href="assets/robot-line-icon.png" />
+  <!-- Lightbox2 -->
+  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js" defer></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== CSS Variables ===== */
+    :root {
+      --bg: #0f1117;
+      --surface: #181c27;
+      --surface2: #1e2333;
+      --border: #2a3050;
+      --accent: #4f8ef7;
+      --accent2: #7dd4c0;
+      --text: #e8eaf0;
+      --text-muted: #8b93b0;
+      --heading-font: 'DM Serif Display', Georgia, serif;
+      --body-font: 'DM Sans', system-ui, sans-serif;
+      --radius: 12px;
+      --max-w: 860px;
+    }
+
+    /* ===== Reset & Base ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--body-font);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 1rem;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--accent2); text-decoration: underline; }
+
+    /* ===== Header ===== */
+    header {
+      background: linear-gradient(160deg, #0d1220 0%, #12192e 60%, #111827 100%);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      padding: 3.5rem 1.5rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% -10%, rgba(79,142,247,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .profile-pic {
+      border-radius: 50%;
+      width: 130px;
+      height: 130px;
+      object-fit: cover;
+      border: 3px solid var(--border);
+      box-shadow: 0 0 0 6px rgba(79,142,247,0.1), 0 8px 32px rgba(0,0,0,0.5);
+      margin-bottom: 1.2rem;
+      position: relative;
+    }
+
+    header h1 {
+      font-family: var(--heading-font);
+      font-size: clamp(1.9rem, 5vw, 2.8rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      margin-bottom: 1.6rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.1rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(79,142,247,0.08);
+    }
+
+    /* ===== Main ===== */
+    main {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    /* ===== Sections ===== */
+    section {
+      margin-bottom: 4rem;
+    }
+
+    section h2 {
+      font-family: var(--heading-font);
+      font-size: clamp(1.3rem, 3vw, 1.7rem);
+      font-weight: 400;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.75rem;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+    }
+
+    /* ===== About ===== */
+    #about p {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ===== Cards for lists ===== */
+    .card-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .card-list li {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.9rem 1.2rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .card-list li:hover {
+      border-color: rgba(79,142,247,0.4);
+      background: var(--surface2);
+    }
+
+    .card-list li strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .card-list li a {
+      color: var(--accent);
+    }
+
+    .card-list li a:hover {
+      color: var(--accent2);
+    }
+
+    /* ===== Skills Tags ===== */
+    .skills-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .skill-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.9rem 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .skill-label {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 0.9rem;
+      white-space: nowrap;
+      margin-right: 0.25rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(79,142,247,0.12);
+      color: var(--accent);
+      border: 1px solid rgba(79,142,247,0.25);
+      border-radius: 100px;
+      padding: 0.2rem 0.7rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .tag.lang {
+      background: rgba(125,212,192,0.1);
+      color: var(--accent2);
+      border-color: rgba(125,212,192,0.25);
+    }
+
+    /* ===== Slideshow ===== */
+    .slideshow-container {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto 0.75rem;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #000;
+      min-height: 120px;
+    }
+
+    .mySlides {
+      display: none;
+      position: relative;
+    }
+
+    .mySlides img,
+    .mySlides video {
+      width: 100%;
+      max-height: 420px;
+      object-fit: contain;
+      border-radius: var(--radius);
+      background: #000;
+      display: block;
+    }
+
+    .slide-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.6rem 1rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.75));
+      color: #fff;
+      font-size: 0.9rem;
+      text-align: center;
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+
+    .slide-counter {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.75rem;
+      background: rgba(0,0,0,0.45);
+      padding: 2px 8px;
+      border-radius: 100px;
+      backdrop-filter: blur(4px);
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 10px 14px;
+      color: white;
+      font-size: 18px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 6px;
+      user-select: none;
+      z-index: 10;
+      transition: background 0.2s;
+      line-height: 1;
+      border: none;
+      backdrop-filter: blur(4px);
+    }
+
+    .next { right: 0; }
+    .prev:hover, .next:hover { background: rgba(0,0,0,0.85); }
+
+    .dots-container {
+      text-align: center;
+      padding: 0.5rem 0 1.5rem;
+    }
+
+    .dot {
+      cursor: pointer;
+      height: 8px;
+      width: 8px;
+      margin: 0 3px;
+      background: var(--border);
+      border-radius: 50%;
+      display: inline-block;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .dot.active, .dot:hover {
+      background: var(--accent);
+      transform: scale(1.3);
+    }
+
+    /* ===== Passions Gallery ===== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .gallery a {
+      display: block;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .gallery a:hover {
+      transform: scale(1.03);
+      border-color: var(--accent);
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ===== Contact ===== */
+    #contact .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.2rem;
+      transition: border-color 0.2s;
+    }
+
+    .contact-card:hover { border-color: rgba(79,142,247,0.4); }
+
+    .contact-card .clabel {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-card a, .contact-card span {
+      color: var(--text);
+      font-size: 0.93rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .contact-card a:hover { color: var(--accent); }
+
+    /* ===== Footer ===== */
+    footer {
+      text-align: center;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 1.25rem 1rem;
+      font-size: 0.85rem;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      .mySlides img,
+      .mySlides video { max-height: 240px; }
+
+      .prev, .next { font-size: 16px; padding: 8px 10px; }
+
+      .gallery { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+      .gallery img { height: 100px; }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <img src="assets/Mara_Samuele.jpeg" alt="Samuele Mara" class="profile-pic" />
-    <h1>Samuele Mara</h1>
-    <p>Research Assistant · IDSIA · AI and 3D Perception for Robotics</p>
-    <nav>
-      <a href="https://github.com/SamueleMara" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://linkedin.com/in/SamueleMara" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:samuelemara@alice.it">Email</a>
-    </nav>
-  </header>
 
-  <main>
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        I'm a Research Assistant at IDSIA (Istituto Dalle Molle di Studi sull’Intelligenza Artificiale), passionate about 
-        robotic systems, 3D perception, and AI for real-world applications.<br>
-        My background is in Mechanical Engineering, with a strong focus on Robotics, Mechatronics, Computer Vision, and Radiance Field-based techniques for robotic manipulation.
-      </p>
-    </section>
+<!-- ===== HEADER ===== -->
+<header>
+  <img src="assets/Mara_Samuele.jpeg" alt="Samuele Mara" class="profile-pic" />
+  <h1>Samuele Mara</h1>
+  <p>PhD Candidate &middot; IDSIA &middot; AI and 3D Perception for Robotics</p>
+  <nav>
+    <a href="https://github.com/SamueleMara" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://linkedin.com/in/SamueleMara" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="mailto:samuelemara@alice.it">Email</a>
+  </nav>
+</header>
 
-    <section id="experience">
-      <h2>Experience</h2>
-      <ul>
-        <li><strong>Research Assistant</strong> — IDSIA, Università della Svizzera italiana (2025–present)</li>
-        <li><strong>Visiting Research Intern</strong> — IDSIA (Feb–Mar 2025)</li>
-        <li><strong>Peer Tutor</strong> — Politecnico di Milano (2020–2022)</li>
-      </ul>
-    </section>
+<!-- ===== MAIN ===== -->
+<main>
 
-    <section id="education">
-      <h2>Education</h2>
-      <ul>
-        <li><strong>MSc Mechanical Engineering</strong> — Final grade: 110/110 — Politecnico di Milano (2022–2025)</li>
-        <li><strong>BSc Mechanical Engineering</strong> — Final grade: 108/110 — Politecnico di Milano (2019–2022)</li>
-        <li><strong>Scientific High School Diploma</strong> — Final grade: 100/100 — Liceo Arturo Tosi (2013–2019)</li>
-      </ul>
-    </section>
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I'm a PhD Candidate at IDSIA (Istituto Dalle Molle di Studi sull'Intelligenza Artificiale),
+      passionate about robotic systems, 3D perception, and AI for real-world applications.<br />
+      My background is in Mechanical Engineering, with a strong focus on Robotics, Mechatronics,
+      Computer Vision, and Radiance Field-based techniques for robotic manipulation.
+    </p>
+  </section>
 
-    <section id="projects">
-      <h2>Academic Projects</h2>
-      <ul>
-        <li><strong>MSc Thesis</strong>: AI for Agricultural Robotics – Improved occluded fruit detection with YOLOv11 and 3D Gaussian Splatting (2025)</li>
-        <li><strong>Ambrose Project</strong>: Indirect Bridge Health Monitoring with Movyon SPA; published at IOMAC 2024</li>
-        <li><strong>3-DOF Robot Design</strong>: Mechanical & control system of an anthropomorphic arm (2023)</li>
-        <li><strong>Ball-on-Plate Control</strong>: Dynamic modeling & control with Kalman Filters and Raspberry Pi (2023)</li>
-        <li><strong>ROS SLAM and Path Planning</strong>: SLAM + A*/RRT-based path planning in Gazebo with TurtleBot (2023)</li>
-      </ul>
+  <!-- Experience -->
+  <section id="experience">
+    <h2>Experience</h2>
+    <ul class="card-list">
+      <li><strong>PhD Candidate </strong> — IDSIA, Università della Svizzera italiana (Jan 2026–present)</li>
+      <li><strong>Research Assistant</strong> — IDSIA, Università della Svizzera italiana (June–Dec 2025)</li>
+      <li><strong>Visiting Research Intern</strong> — IDSIA (Feb–Mar 2025)</li>
+      <li><strong>Peer Tutor</strong> — Politecnico di Milano (2020–2022)</li>
+    </ul>
+  </section>
 
-      <h2>Gallery</h2>
-      <div class="glider-contain image-glider-contain">
-        <button class="glider-prev image-prev" aria-label="Previous image">←</button>
-        <div class="glider image-glider">
-          <img src="assets/gallery/3Dreconstruction.png" alt="3D Reconstruction" title="3D Reconstruction" />
-          <img src="assets/gallery/detection.png" alt="Fruit Detection" title="Fruit Detection" />
-          <img src="assets/gallery/pipeline.png" alt="AI Pipeline" title="AI Pipeline" />
-          <img src="assets/gallery/3dofs_robot.jpg" alt="3 Dofs robot" title="3 Dofs robot" />
-          <img src="assets/gallery/esploso.png" alt="Esploso" title="Esploso" />
-          <img src="assets/gallery/movyon.png" alt="movyon" title="movyon" />
-          <img src="assets/gallery/autonomous_vehicles.png" alt="autonomous_vehicles" title="autonomous_vehicles" />
-        </div>
-        <button class="glider-next image-next" aria-label="Next image">→</button>
-        <div role="tablist" class="dots image-dots"></div>
+  <!-- Education -->
+  <section id="education">
+    <h2>Education</h2>
+    <ul class="card-list">
+      <li><strong>MSc Mechanical Engineering</strong> — Final grade: 110/110 — Politecnico di Milano (2022–2025)</li>
+      <li><strong>BSc Mechanical Engineering</strong> — Final grade: 108/110 — Politecnico di Milano (2019–2022)</li>
+      <li><strong>Scientific High School Diploma</strong> — Final grade: 100/100 — Liceo Arturo Tosi (2013–2019)</li>
+    </ul>
+  </section>
+
+  <!-- Projects / Gallery -->
+  <section id="projects">
+    <h2>Gallery</h2>
+
+    <!-- IMAGE SLIDESHOW -->
+    <div class="slideshow-container" id="image-slideshow">
+      <div class="mySlides">
+        <div class="slide-counter">1 / 7</div>
+        <img src="assets/gallery/3Dreconstruction.png" alt="3D Reconstruction" />
+        <div class="slide-caption">3D Reconstruction</div>
       </div>
-
-      <h2>Videos</h2>
-      <div class="glider-contain video-glider-contain">
-        <button class="glider-prev video-prev" aria-label="Previous video">←</button>
-        <div class="glider video-glider">
-          <video autoplay muted playsinline controls>
-            <source src="assets/gallery/str2.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <video autoplay muted playsinline controls>
-            <source src="assets/gallery/table_steelball_best.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <button class="glider-next video-next" aria-label="Next video">→</button>
-        <div role="tablist" class="dots video-dots"></div>
+      <div class="mySlides">
+        <div class="slide-counter">2 / 7</div>
+        <img src="assets/gallery/detection.png" alt="Fruit Detection" />
+        <div class="slide-caption">Fruit Detection</div>
       </div>
-    </section>
-
-    <section id="skills">
-      <h2>Skills</h2>
-      <ul>
-        <li><strong>Programming Languages:</strong> Python, MATLAB, C++</li>
-        <li><strong>Frameworks & Tools:</strong> ROS, OpenCV, PyTorch, TensorFlow, Git, Abaqus, MATLAB Simulink</li>
-        <li><strong>Languages:</strong> Italian (native), English (C1)</li>
-      </ul>
-    </section>
-
-    <section id="publications">
-      <h2>Publications & Thesis</h2>
-      <ul>
-        <li>
-          <strong>MSc Thesis:</strong> 
-          <a href="assets/thesis/Tesi_Mara_Samuele.pdf" target="_blank" rel="noopener">
-            <em>An improved computer vision-based approach for automatic fruit picking</em> (2025)
-          </a>
-        </li>
-        <li>
-          <strong>Conference Paper:</strong> 
-          <a href="https://doi.org/10.1007/978-3-031-61425-5_49" target="_blank" rel="noopener">
-            Indirect Bridge Health Monitoring – IOMAC 2024 Proceedings
-          </a>
-        </li>
-      </ul>
-    </section>
-
-    <section id="awards">
-      <h2>Awards & Honors</h2>
-      <ul>
-        <li><strong>Alta Scuola Politecnica – Top 3 Projects</strong> (2025)</li>
-        <li><strong>Best Freshmen Award</strong> – Politecnico di Milano Top 1000 (2022)</li>
-      </ul>
-    </section>
-
-    <section id="extracurricular">
-      <h2>Extracurricular</h2>
-      <ul>
-        <li><strong>Alta Scuola Politecnica (ASP)</strong> – Advanced interdisciplinary program (2023–2025)</li>
-        <li><strong>Blood Donor</strong> – AVIS, Busto Arsizio (2019–present)</li>
-        <li><strong>Volunteer</strong> – Orto Amico: inclusive agriculture project (2024–present)</li>
-      </ul>
-    </section>
-
-    <section id="passions-and-hobbies">
-      <h2>Passions and Hobbies</h2>
-      <div class="gallery">
-        <a href="assets/gallery/monterosa.png" data-lightbox="gallery" data-title="Monte Rosa Hike">
-          <img src="assets/gallery/monterosa.png" alt="Monte Rosa" />
-        </a>
-        <a href="assets/gallery/ortoamico.png" data-lightbox="gallery" data-title="Inclusive Agriculture – Orto Amico Project">
-          <img src="assets/gallery/ortoamico.png" alt="Orto Amico Project" />
-        </a>
-        <a href="assets/gallery/wind_rises.jpg" data-lightbox="gallery" data-title="Personal Inspiration – 'The Wind Rises'">
-          <img src="assets/gallery/wind_rises.jpg" alt="The Wind Rises" />
-        </a>
-        <a href="assets/gallery/cuore.png" data-lightbox="gallery" data-title="Personal Inspiration – 'Cuore di patata'">
-          <img src="assets/gallery/cuore.png" alt="Cuore di patata" />
-        </a>
-        <a href="assets/gallery/amici.png" data-lightbox="gallery" data-title="Personal Inspiration – 'Amici'">
-          <img src="assets/gallery/amici.png" alt="Amici" />
-        </a>
-        
+      <div class="mySlides">
+        <div class="slide-counter">3 / 7</div>
+        <img src="assets/gallery/pipeline.png" alt="AI Pipeline" />
+        <div class="slide-caption">AI Pipeline</div>
       </div>
-    </section>
+      <div class="mySlides">
+        <div class="slide-counter">4 / 7</div>
+        <img src="assets/gallery/3dofs_robot.jpg" alt="3 DOFs Robot" />
+        <div class="slide-caption">3 DOFs Robot</div>
+      </div>
+      <div class="mySlides">
+        <div class="slide-counter">5 / 7</div>
+        <img src="assets/gallery/esploso.png" alt="Esploso" />
+        <div class="slide-caption">Esploso</div>
+      </div>
+      <div class="mySlides">
+        <div class="slide-counter">6 / 7</div>
+        <img src="assets/gallery/movyon.png" alt="Movyon Project" />
+        <div class="slide-caption">Movyon Project</div>
+      </div>
+      <div class="mySlides">
+        <div class="slide-counter">7 / 7</div>
+        <img src="assets/gallery/autonomous_vehicles.png" alt="Autonomous Vehicles" />
+        <div class="slide-caption">Autonomous Vehicles</div>
+      </div>
+      <button class="prev" onclick="plusSlides(-1, 'image')" aria-label="Previous">&#10094;</button>
+      <button class="next" onclick="plusSlides(1, 'image')" aria-label="Next">&#10095;</button>
+    </div>
+    <div class="dots-container" id="image-dots">
+      <span class="dot" onclick="currentSlide(1, 'image')"></span>
+      <span class="dot" onclick="currentSlide(2, 'image')"></span>
+      <span class="dot" onclick="currentSlide(3, 'image')"></span>
+      <span class="dot" onclick="currentSlide(4, 'image')"></span>
+      <span class="dot" onclick="currentSlide(5, 'image')"></span>
+      <span class="dot" onclick="currentSlide(6, 'image')"></span>
+      <span class="dot" onclick="currentSlide(7, 'image')"></span>
+    </div>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:samuelemara@alice.it">samuelemara@alice.it</a></p>
-      <p>Phone: +39 348 715 2064</p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/SamueleMara" target="_blank" rel="noopener">SamueleMara</a></p>
-      <p>GitHub: <a href="https://github.com/SamueleMara" target="_blank" rel="noopener">github.com/SamueleMara</a></p>
-    </section>
-  </main>
+    <h2>Videos</h2>
 
-  <footer>
-    <p>© 2025 Samuele Mara · Powered by GitHub Pages</p>
-  </footer>
+    <!-- VIDEO SLIDESHOW -->
+    <div class="slideshow-container" id="video-slideshow">
+      <div class="mySlides">
+        <div class="slide-counter">1 / 2</div>
+        <video autoplay muted loop playsinline controls>
+          <source src="assets/gallery/str2.mp4" type="video/mp4" />
+        </video>
+        <div class="slide-caption">Automatic Fruit Picking</div>
+      </div>
+      <div class="mySlides">
+        <div class="slide-counter">2 / 2</div>
+        <video autoplay muted loop playsinline controls>
+          <source src="assets/gallery/table_steelball_best.mp4" type="video/mp4" />
+        </video>
+        <div class="slide-caption">Steelball Control</div>
+      </div>
+      <button class="prev" onclick="plusSlides(-1, 'video')" aria-label="Previous">&#10094;</button>
+      <button class="next" onclick="plusSlides(1, 'video')" aria-label="Next">&#10095;</button>
+    </div>
+    <div class="dots-container" id="video-dots">
+      <span class="dot" onclick="currentSlide(1, 'video')"></span>
+      <span class="dot" onclick="currentSlide(2, 'video')"></span>
+    </div>
+  </section>
 
-  <script>
-    window.addEventListener('load', function () {
-      // Image glider
-      new Glider(document.querySelector('.image-glider'), {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        draggable: true,
-        exactWidth: true,
-        scrollLock: true,
-        arrows: {
-          prev: '.image-glider-contain .glider-prev',
-          next: '.image-glider-contain .glider-next'
-        }
-      });
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-block">
+      <div class="skill-row">
+        <span class="skill-label">Languages:</span>
+        <span class="tag">Python</span>
+        <span class="tag">MATLAB</span>
+        <span class="tag">C++</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Frameworks &amp; Tools:</span>
+        <span class="tag">ROS</span>
+        <span class="tag">OpenCV</span>
+        <span class="tag">PyTorch</span>
+        <span class="tag">TensorFlow</span>
+        <span class="tag">Git</span>
+        <span class="tag">Abaqus</span>
+        <span class="tag">MATLAB Simulink</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Spoken:</span>
+        <span class="tag lang">Italian (native)</span>
+        <span class="tag lang">English (B2)</span>
+      </div>
+    </div>
+  </section>
 
-      // Video glider
-      new Glider(document.querySelector('.video-glider'), {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        draggable: true,
-        exactWidth: true,
-        scrollLock: true,
-        arrows: {
-          prev: '.video-glider-contain .glider-prev',
-          next: '.video-glider-contain .glider-next'
-        }
-      });
+  <!-- Publications -->
+  <section id="publications">
+    <h2>Publications &amp; Thesis</h2>
+    <ul class="card-list">
+      <li>
+        <strong>MSc Thesis:</strong>
+        <a href="assets/thesis/Tesi_Mara_Samuele.pdf" target="_blank" rel="noopener noreferrer">
+          <em>An improved computer vision-based approach for automatic fruit picking</em> (2025)
+        </a>
+      </li>
+      <li>
+        <strong>Conference Paper:</strong>
+        <a href="https://doi.org/10.1007/978-3-031-61425-5_49" target="_blank" rel="noopener noreferrer">
+          Indirect Bridge Health Monitoring – IOMAC 2024 Proceedings
+        </a>
+      </li>
+    </ul>
+  </section>
 
-      // Autoplay muted looping videos
-      document.querySelectorAll('.video-glider video').forEach(video => {
-        video.muted = true;
-        video.loop = true;
-        video.playsInline = true;
-        video.play().catch(() => {});
-      });
-    });
-  </script>
-  
+  <!-- Awards -->
+  <section id="awards">
+    <h2>Awards &amp; Honors</h2>
+    <ul class="card-list">
+      <li><strong>Alta Scuola Politecnica – Top 3 Projects</strong> (2025)</li>
+      <li><strong>Best Freshmen Award</strong> – Politecnico di Milano Top 1000 (2022)</li>
+    </ul>
+  </section>
+
+  <!-- Extracurricular -->
+  <section id="extracurricular">
+    <h2>Extracurricular</h2>
+    <ul class="card-list">
+      <li><strong>Alta Scuola Politecnica (ASP)</strong> – Advanced interdisciplinary program (2023–2025)</li>
+      <li><strong>Blood Donor</strong> – AVIS, Busto Arsizio (2019–present)</li>
+      <li><strong>Volunteer</strong> – Orto Amico: inclusive agriculture project (2024–present)</li>
+    </ul>
+  </section>
+
+  <!-- Passions & Hobbies -->
+  <section id="passions-and-hobbies">
+    <h2>Passions and Hobbies</h2>
+    <div class="gallery">
+      <a href="assets/gallery/monterosa.png" data-lightbox="hobbies" data-title="Monte Rosa Hike">
+        <img src="assets/gallery/monterosa.png" alt="Monte Rosa" />
+      </a>
+      <a href="assets/gallery/ortoamico.png" data-lightbox="hobbies" data-title="Inclusive Agriculture – Orto Amico Project">
+        <img src="assets/gallery/ortoamico.png" alt="Orto Amico Project" />
+      </a>
+      <a href="assets/gallery/wind_rises.jpg" data-lightbox="hobbies" data-title="Personal Inspiration – 'The Wind Rises'">
+        <img src="assets/gallery/wind_rises.jpg" alt="The Wind Rises" />
+      </a>
+      <a href="assets/gallery/cuore.png" data-lightbox="hobbies" data-title="Personal Inspiration – 'Cuore di patata'">
+        <img src="assets/gallery/cuore.png" alt="Cuore di patata" />
+      </a>
+      <a href="assets/gallery/amici.png" data-lightbox="hobbies" data-title="Personal Inspiration – 'Amici'">
+        <img src="assets/gallery/amici.png" alt="Amici" />
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="clabel">Email</div>
+        <a href="mailto:samuelemara@alice.it">samuelemara@alice.it</a>
+      </div>
+      <div class="contact-card">
+        <div class="clabel">Phone</div>
+        <span>+39 348 715 2064</span>
+      </div>
+      <div class="contact-card">
+        <div class="clabel">LinkedIn</div>
+        <a href="https://linkedin.com/in/SamueleMara" target="_blank" rel="noopener noreferrer">SamueleMara</a>
+      </div>
+      <div class="contact-card">
+        <div class="clabel">GitHub</div>
+        <a href="https://github.com/SamueleMara" target="_blank" rel="noopener noreferrer">SamueleMara</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2025 Samuele Mara · Powered by GitHub Pages</p>
+</footer>
+
+<script>
+  // ─── Separate state for each slideshow ───────────────────────────────────────
+  const slideshowState = {
+    image: { index: 1 },
+    video: { index: 1 }
+  };
+
+  /**
+   * Returns all .mySlides children of the given container id,
+   * and the matching dots from the dots container.
+   */
+  function getSlideshowElements(type) {
+    const container = document.getElementById(type + '-slideshow');
+    const dotsContainer = document.getElementById(type + '-dots');
+    const slides = container ? container.querySelectorAll('.mySlides') : [];
+    const dots = dotsContainer ? dotsContainer.querySelectorAll('.dot') : [];
+    return { slides, dots };
+  }
+
+  function showSlides(type) {
+    const state = slideshowState[type];
+    const { slides, dots } = getSlideshowElements(type);
+    if (!slides.length) return;
+
+    // Wrap around
+    if (state.index > slides.length) state.index = 1;
+    if (state.index < 1) state.index = slides.length;
+
+    // Hide all slides, clear all dots
+    slides.forEach(s => s.style.display = 'none');
+    dots.forEach(d => d.classList.remove('active'));
+
+    // Show current slide and activate matching dot
+    slides[state.index - 1].style.display = 'block';
+    if (dots[state.index - 1]) dots[state.index - 1].classList.add('active');
+  }
+
+  function plusSlides(n, type) {
+    slideshowState[type].index += n;
+    showSlides(type);
+  }
+
+  function currentSlide(n, type) {
+    slideshowState[type].index = n;
+    showSlides(type);
+  }
+
+  // Initialise both slideshows on load
+  document.addEventListener('DOMContentLoaded', () => {
+    showSlides('image');
+    showSlides('video');
+  });
+</script>
 </body>
 </html>

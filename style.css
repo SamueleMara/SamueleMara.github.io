@@ -1,3 +1,4 @@
+/* ===== Global ===== */
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
@@ -5,6 +6,11 @@ body {
   background: #f4f4f4;
   color: #333;
   font-size: 1rem;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 header {
@@ -25,10 +31,9 @@ nav a:hover {
 }
 
 main {
-  max-width: 90vw;       /* max 90% viewport width */
+  max-width: 90vw;
   margin: 2em auto;
   padding: 0 1em;
-  box-sizing: border-box;
 }
 
 .profile-pic {
@@ -36,7 +41,7 @@ main {
   width: 120px;
   height: 120px;
   object-fit: cover;
-  max-width: 30vw;       /* scale on small screens */
+  max-width: 30vw;
   max-height: 30vw;
 }
 
@@ -50,127 +55,113 @@ footer {
   padding: 1em;
 }
 
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
-
-.gallery img {
-  height: auto;
-  max-height: 180px;
-  width: auto;
-  max-width: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
-}
-
-.gallery img:hover {
-  transform: scale(1.05);
-}
-
-.video-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-#publications ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-#publications li {
-  margin-bottom: 1.5em;
-  line-height: 1.6;
-}
-
-#publications a {
-  color: #00bfff;
-  text-decoration: none;
-}
-
-#publications a:hover {
-  text-decoration: underline;
-}
-
-.glider-contain,
-.video-glider-contain {
-  position: relative;
-  width: 100%;
+/* ===== Slideshow (Gallery & Videos) ===== */
+.slideshow-container {
+  max-width: 800px;
   margin: 2em auto;
-  padding: 1em 2em;
-  box-sizing: border-box;
-  overflow: visible;
+  position: relative;
 }
 
-.glider {
-  display: flex;
-  overflow: hidden;
-  scroll-behavior: smooth;
+.mySlides {
+  display: none;
 }
 
-.glider > * {
-  flex: 0 0 100%;
-  max-width: 100%;
-  scroll-snap-align: center;
-}
-
-.glider-prev,
-.glider-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  background: rgba(255, 255, 255, 0.9);
-  border: none;
-  border-radius: 50%;
-  font-size: 2rem;
-  color: #007acc;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-
-.glider-prev {
-  left: -20px;
-}
-
-.glider-next {
-  right: -20px;
-}
-
-.glider img,
-.video-glider video {
+.mySlides img,
+.mySlides video {
   width: 100%;
   max-height: 400px;
   object-fit: contain;
-  border-radius: 12px;
+  border-radius: 10px;
   background: #000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
 }
 
-.glider img:hover,
-.video-glider video:hover {
-  transform: scale(1.02);
+/* Navigation buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 12px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.3s;
+  user-select: none;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
+.next {
+  right: 0;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Captions */
+.text {
+  color: #fff;
+  font-size: 16px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 0 0 10px 10px;
+}
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Dots / Indicators */
+.dot {
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+  margin: 0 4px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .glider-prev,
-  .glider-next {
-    width: 30px;
-    height: 30px;
-    font-size: 1.2rem;
+  .prev, .next {
+    font-size: 18px;
+    padding: 10px;
   }
 
-  .glider img,
-  .video-glider video {
-    max-height: 250px;
+  .mySlides img,
+  .mySlides video {
+    max-height: 300px;
   }
 }
+
+@media (max-width: 480px) {
+  .prev, .next {
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+
+  .mySlides img,
+  .mySlides video {
+    max-height: 200px;
+  }
+}
+
