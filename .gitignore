@@ -1,0 +1,13 @@
+# Old website files
+index_old.html
+style_old.css
+
+# Dataset / large files
+datasets/
+*.zip
+*.tar
+*.tar.gz
+
+# OS files
+.DS_Store
+Thumbs.db
